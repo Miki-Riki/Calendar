@@ -107,18 +107,18 @@ body {
 }
 
 small {
-    position: absolute;
-    margin: 25% 0 0 0;
+    display: block;
+    margin: 15% 0 0 0;
     font-weight: bold;
     border-radius: .5em;
     padding: .5em;
-    width: 90%;
+    width: 100%;
     text-align: center;
     height: 50px;
 }
 
-.event_name {
-    margin-top: 1em;
+.event_time {
+    margin-top: -2em;
 }
 
 .event-bg {
@@ -149,5 +149,9 @@ small {
 
     .current_day > .day_text {
         font-weight: normal;
+    }
+
+    small {
+        margin-top: 5%;
     }
 }
