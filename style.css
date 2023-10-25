@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.container {
+    padding: 40px;
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap:20px;
+    width: 400px;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+}
+
+.header i {
+    background-color: white;
+    padding: 1em;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 250ms;
+}
+
+.header i:hover {
+    transform: scale(1.05);
+    transition: all 250ms;
+}
+
+.day_name {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(51, 48, 48, 0.1);
+    border-radius: 1em 1em 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: black;
+    padding: 10px;
+}
+
+#calendar_header {
+    display: grid;
+    grid-template-columns: repeat(7, 150px);
+    gap: 3px;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 150px);
+    gap: 3px;
+}
+
+.day {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    transition: all 250ms ease;
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.day:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 250ms ease;
+}
+
+.day_text {
+    display: none;
+}
+
+.day_number {
+    font-size: 42px;
+    font-weight: bold;
+    text-align: center;
+    margin: 1;
+}
+
+small {
+    position: absolute;
+    margin: 25% 0 0 0;
+    font-weight: bold;
+    border-radius: .5em;
+    padding: .5em;
+    width: 90%;
+    text-align: center;
+    height: 50px;
+}
+
+.event_name {
+    margin-top: 1em;
+}
+
+.event-bg {
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.current_day {
+    font-weight: bold;
+    border: 2px solid;
+    --angle: 0deg;
+    animation: 5s rotate linear infinite;
+	border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+}
+
+@media screen and (max-width: 1300px) {
+    #calendar_header {
+       display: none;
+    }
+
+    #calendar {
+        grid-template-columns: repeat(5, 150px);
+    }
+
+    .day_text {
+        display: block;
+    }
+
+    .current_day > .day_text {
+        font-weight: normal;
+    }
+}
